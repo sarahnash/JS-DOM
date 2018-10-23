@@ -8,44 +8,31 @@
 
 var b = document.getElementById('add-button')
 
+var myNodeList = document.getElementById('todo-list').childNodes
+var onlyElements = []
+var i
+for (i = 0; i < myNodeList.length; i++) {
+  if (myNodeList[i].nodeType === Node.ELEMENT_NODE) {
+    onlyElements.push(myNodeList[i])
+  }
+}
+
 b.addEventListener('click', function () {
   var node = document.createElement('li') // create <li> node
   var text = document.getElementById('description').value // put description input as text
   node.innerHTML = text // make the description input the next <li>
   node.classList.add('item') // add item class to <li>
   document.getElementById('todo-list').appendChild(node) // add to the list
+  onlyElements.push(node)
 })
 
-var myNodeList = document.getElementById('todo-list').childNodes
-console.log(myNodeList)
-
-myNodeList.addEventListener('click', function () {
+onlyElements.addEventListener('click', function () {
   var i
-  for (i = 0; i < myNodeList.length; i++) {
-    if (myNodeList[i].style.textDecoration === 'none') {
-      myNodeList[i].style.Decoration = 'strikethrough'
+  for (i = 0; i < onlyElements.length; i++) {
+    if (onlyElements[i].style.textDecoration === 'none') {
+      onlyElements[i].style.Decoration = 'strikethrough'
     } else {
-      myNodeList[i].style.Decoration = 'none'
+      onlyElements[i].style.Decoration = 'none'
     }
   }
 })
-
-
-//   var list = document.getElementById('todo-list')
-//   if (s.style.display === 'none') {
-//     s.style.display = 'block'
-//   } else {
-//     s.style.display = 'none'
-//   }
-// })
-
-// button.addEventListener('click', function () {
-//     var x = document.getElementsByClassName('box')
-//     console.log(x)
-//     var i
-//     for (i = 0; i < x.length; i++) {
-//       console.log(x[i])
-//       x[i].style.backgroundColor = 'blue'
-//     }
-//   })
-  
