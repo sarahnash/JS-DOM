@@ -23,16 +23,35 @@ b.addEventListener('click', function () {
   node.innerHTML = text // make the description input the next <li>
   node.classList.add('item') // add item class to <li>
   document.getElementById('todo-list').appendChild(node) // add to the list
-  onlyElements.push(node)
+  onlyElements.push(node) // add to the array of <li> items
 })
 
-onlyElements.addEventListener('click', function () {
-  var i
-  for (i = 0; i < onlyElements.length; i++) {
-    if (onlyElements[i].style.textDecoration === 'none') {
-      onlyElements[i].style.Decoration = 'strikethrough'
-    } else {
-      onlyElements[i].style.Decoration = 'none'
-    }
+var parent = document.getElementById('todo-list')
+
+parent.addEventListener('click', function (evt) {
+  console.log('you clicked this')
+  console.log(evt.target)
+  if (evt.target.style.textDecoration === 'none') {
+    evt.target.style.textDecoration = 'line-through'
+  } else {
+    evt.target.style.textDecoration = 'none'
   }
 })
+
+
+// clickOnBody.addEventListener('click', function (evt) {
+//   if (evt.target.class === 'item') {
+//     if (evt.target.style.textDecoration === 'none') {
+//       evt.target.style.textDecoration = 'strikethrough'
+//     } 
+//     else {
+//       evt.target.style.textDecoration = 'none'
+//     }
+//   }
+// })
+
+// function clickOnBOx(evt){
+// evt.stopPropagation() stops bubbling of events you apply it to
+// evt.preventDefault() stops the browser from doing native events, lets you be in charge
+// console.log('click event <target>
+// console.dir(evt)  : show all the properties of the event (you can't use log)
